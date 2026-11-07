@@ -9,9 +9,123 @@
    <meta charset="utf-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
    <title>RaceDay | Run. Complete. Achieve.</title>
+<link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+</head>
 
-   
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      RACE<span> DAY</span>
+    </div>
+
+    <div class="nav-tagline">
+       RUN. COMPETE. ACHIEVE.
+    </div>
+
+    </header>
+
+    <section class="hero">
+        <div class="hero-label">
+           WELCOME TO RaceDay
+        </div>
+
+        <h1>
+        RaceEvent.<br/>
+        Distance.<br/>
+        <span> Your achievement.</span>
+        </h1>
+
+        <p> Whether you're organising an unforgettable race or preparing to participate, 
+        RaceDay brings your racing experience together in one place.</p>
+
+        </section>
+
+        <main class="selection">
+
+        <h2>
+         How would you like to continue?>
+         </h2>
+         <p class="selection-intro"> Choose your role to access your RaceDay account.</p>
+
+         <div class="role-container">
+
+         <div class="role-card">
+           <div class="role-icon">
+           trophy image
+           </div>
+
+           <h3>
+           I'm an Organiser
+           </h3>
+
+           <p> Create and manage races, oversee participants and bring exciting
+           racing events to life.</p>
+
+           <div class="role-actions">
+           <a 
+           asp-controller="Account"
+           asp-action="Login"
+           asp-route-role="Organiser"
+           class="btn btn-primary">
+
+                                  Organiser
+           Login
+           </a>
+
+           <a 
+           asp-controller="Account"
+           asp-action="Register"
+           asp-route-role="Organiser"
+           class="btn btn-secondary">
+           Register
+           </a>
+           </div>
+           </div>
+
+           <div class="role-card">
+              <div class="role-icon">
+              runner icon
+              </div>
+
+              <h3>
+              participants</h3>
+
+              <p>Discover exciting races, register for events and become 
+              participantsof the RaceDay community.</p>
+
+              <div class="role-actions">
+              <a 
+              asp-controllers="Account"
+              asp-action="Login"
+              asp-route-role="Participant"
+              class="btn btn-primary">
+                                               Participant 
+              Login
+              </a>
+
+              <a 
+              asp-controller="Account"
+              asp-action="Register"
+              asp-route-role="Participant"
+              class="btn btn-secondary">
+
+                                            Register
+                                            </a>
+                                            </div>
+                                            </div>
+                                            </div>
+                                        </main>
+
+                <footer class="footer">
+                <p> &copy; @DateTime.Now.Year
+
+                <strong>RaceDay</strong>.
+                RUN. COMPETE. ACHIEVE.
+                </p>
+                </footer>
+
+                </body>
+                </html>
+
+
+

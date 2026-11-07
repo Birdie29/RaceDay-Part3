@@ -1,10 +1,10 @@
 :root{
-  darkgreen: #123D2A;
-  lightgreen: #A8DDB5;
-  white: #FFFFFF;
-  black: #171A18;
-  muted: #69756D;
-  background: #F6F9F6;
+  --darkgreen: #123D2A;
+  --lightgreen: #A8DDB5;
+  --white: #FFFFFF;
+  --black: #171A18;
+  --muted: #69756D;
+  --background: #F6F9F6;
 }
 
 *{
