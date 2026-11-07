@@ -1,6 +1,7 @@
 using System.Net.Http.Json;
 
-namespace RaceDay.MVC.Services{
+namespace RaceDay.MVC.Services
+{
     public class ApiService :
     IApiService
     {
@@ -15,15 +16,28 @@ namespace RaceDay.MVC.Services{
         public async Task<T?>
         GetAsync<T>(string endpoint)
         {
-            return await _httpClient.GetFromJsonAsync<T>(endpoint);
+            return await
+             _httpClient.GetFromJsonAsync<T>(endpoint);
         }
 
-        public async Task<Tresponse?> PostAsync<TRequest, TResponse>(
+        public async Task<TResponse?> PostAsync<TRequest, TResponse(
+            string endpoint,
+            TResquest data)
+            {
+                var response = await
+                _httpClient.PostAsJsonAsync(
+                    endpoint, data);
+
+                    response.EnsureSuccessStatusCode();
+                    return awaitresponse.Content.ReadFromJsonAsync<TResponse>();
+            }
+        
+        public async Task<TResponse?> PutAsync<TRequest, TResponse>(
             string endpoint,
             TRequest data)
             {
                 var response = await
-                _httpClient.PostAsJsonAsync(
+                _httpClient.PutAsJsonAsync(
                     endpoint, data
                 );
 
