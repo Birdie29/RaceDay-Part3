@@ -1,31 +1,249 @@
-html {
+:root{
+  darkgreen: #123D2A;
+  lightgreen: #A8DDB5;
+  white: #FFFFFF;
+  black: #171A18;
+  muted: #69756D;
+  background: #F6F9F6;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Seouge UI', Arial, sans-serif;
+  background: var(--background);
+  color: var(--black);
+}
+
+.navbar{
+  background: var(--white);
+  padding: 20px 7%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.logo{
+  font-size: 27px;
+  font-weight: 800;
+  color: var(--dark-green);
+  letter-spacing: 1px;
+}
+
+.logo span{
+  color: #70AD7F;
+}
+
+.nav-tagline {
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.hero{
+  backgorund: Linear-gradient(
+    125deg,
+    #123D2A,
+    #246343
+  );
+
+  color: var(--white);
+  padding: 90px 7% 85px;
+  text-align: center;
+}
+
+.hero-label{
+  display: inline-block;
+
+  background: rgba(168, 221, 181, 017);
+  color: var(--light-green);
+
+  padding: 9px 18px;
+  border-radius: 30px;
+
+  font-size: 12px;
+  letter-spacing: 2px;
+
+  margin-bottom: 25px;
+}
+
+.hero h1 span{
+  font-size: clamp(38px, 6vw, 65px);
+  line-height: 1.12;
+  margin-bottom: 20px;
+}
+
+.hero h1 span{
+  color: var(--light-green);
+}
+
+.hero p{
+  max-width: 620px;
+  margin: auto;
+
+  line-height: 1.8;
+  color: #E1EEE5;
+  font-size: 16px;
+}
+
+.selection h2{
+  font-size: 32px;
+  color: var(--dark-green);
+  margin-bottom: 38px;
+}
+
+.role-container{
+  display: grid;
+
+  grid-template-columns:
+  repeat(2, minmax(0, 1fr));
+
+  gap: 28px;
+
+  max-width: 1000px;
+  margin: auto;
+}
+
+.role-card{
+  background: var(--white);
+
+  border: 1px solid #E4EBE5;
+  border-radius: 18px;
+
+  padding: 38px 30px;
+  text-align: left;
+
+  box-shadow: 0 8px 25px rgba(18, 61, 42, 0.05);
+
+  transition: 
+  transform 0.25s,
+  box-shadow 0.25s;
+}
+
+.role-card:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(18, 61, 42, 0.10);
+}
+
+.role-icon{
+  width: 60px;
+  height: 60px;
+
+  background: #E5F4E8;
+  border-radius: 15px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 29px;
+
+  margin-bottom: 23px;
+}
+
+.role-card h3{
+  font-size: 23px;
+  color: var(--dark-green);
+  margin-bottom: 12px;
+}
+
+.role-card p{
+  color: var(--muted);
+
+  line-height: 1.7;
   font-size: 14px;
+
+  min-height: 70px;
+  margin-bottom: 25px;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
+.role-actions{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn{
+  text-decoration: none;
+  padding: 13px 20px;
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  text-align: center;
+  transition: 0.2s;
+}
+
+.btn-primary{
+  background: var(--dark-green);
+  color: var(--white);
+}
+
+.btn-primary:hover{
+  background: #246343;
+}
+
+.btn-secondary{
+  background: var(--light-green);
+  color: var(--dark-green);
+}
+
+.btn-secondary:hover{
+  background: #91CEA0;
+}
+
+.footer{
+  background: var(--dark-green);
+  color: #DCE9DF;
+
+  text-align: center;
+  padding: 25px 15px;
+
+  font-size: 13px;
+}
+
+.footer strong{
+  color: var(--light-green);
+}
+
+@madia(max-width: 700px){
+  .navbar{
+    padding: 18px 5%;
   }
-}
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
+  .nav-tagline{
+    display: none;
+  }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
+  .hero{
+    padding: 70px 6%;
+  }
 
-body {
-  margin-bottom: 60px;
-}
+  .role-container{
+    grid-template-columns: 1fr;
+  }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
-}
+  .selection{
+    padding: 50px 6%;
+  }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+  .role-card p{
+    min-height: auto;
+  }
+
+  .role-actions{
+    flex-direction: column;
+  }
+
+  .btn{
+    width: 100%;
+  }
 }
