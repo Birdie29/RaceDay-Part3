@@ -1,19 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace RaceDay.Mvc.Controllers
+namespace RaceDay.MVC.Controllers
 {
-    public class AccountConntroller :
-    Controllers
+    public class AccountController : Controllers
     {
         [HttpGet]
-        public IActionResult Login(string role)
+        public IActionResult
+        Login(string role)
         {
             role = ValidateRole(role);
 
             if(role == null)
             {
-                return RedirectToAction("Index", "Home");
+                return
+                RedirectToAction("Index", "Home");
             }
+
             ViewBag.Role = role;
             return View();
         }
@@ -21,40 +23,35 @@ namespace RaceDay.Mvc.Controllers
         [HttpGet]
         public IActionResult Register(string role)
         {
-            role = ValidateRole(role);
+            role =
+            ValidateRole(role);
+
             if(role == null)
             {
-                return RedirectToAction("Index", "Home");
+                return
+                RedirectToAction("Index", "Home");
             }
 
             ViewBag.Role = role;
             return View();
+        }
 
-            private string ValidateRole(string role)
+        private string
+        ValidateRole(string role)
+        {
+            if(string.Equals(role, "Organiser",
+            StringComparison.OrdinalIgnoreCase))
             {
-                if (string.Equals(role,
-                "Organiser",
-                
-                StringComparison.OrdinalIgnoreCase))
-                {
-                    return "Organiser";
-                }
-
-                if(string.Equals(role, "Participant,
-                
-                StringComparison.OrdinalIgnoreCase"))
-                {
-                    return "Organiser";
-                }
-
-                if(string.Equals(role, "Participant",
-                
-                StringComparison.OrdinalIgnoreCase))
-                {
-                    return "Participant";
-                }
-                return null;
+                return "Organiser";
             }
+
+            if(string.Equals(role, "Participant",
+            StringComparison.OrdinalIgnoreCase))
+            {
+                return "Participant";
+            }
+
+            return null;
         }
     }
 }
