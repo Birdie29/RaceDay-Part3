@@ -1,4 +1,5 @@
-namespace RaceDay.MVC.Services{
+namespace RaceDay.MVC.Services
+{
     public interface IApiService
     {
         Task<T?> GetAsync<T>(string 
