@@ -20,6 +20,7 @@ builder.Services.AddSession(options =>
     TimeSpan.FromMinutes(30);
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
 });
 var app = builder.Build();
 
