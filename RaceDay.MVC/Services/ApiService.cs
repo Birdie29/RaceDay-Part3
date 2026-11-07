@@ -20,7 +20,7 @@ namespace RaceDay.MVC.Services
              _httpClient.GetFromJsonAsync<T>(endpoint);
         }
 
-        public async Task<TResponse?> PostAsync<TRequest, TResponse(
+        public async Task<TResponse?> PostAsync<TRequest, TResponse>(
             string endpoint,
             TResquest data)
             {
@@ -29,7 +29,8 @@ namespace RaceDay.MVC.Services
                     endpoint, data);
 
                     response.EnsureSuccessStatusCode();
-                    return awaitresponse.Content.ReadFromJsonAsync<TResponse>();
+                    return await 
+                    response.Content.ReadFromJsonAsync<TResponse>();
             }
         
         public async Task<TResponse?> PutAsync<TRequest, TResponse>(
