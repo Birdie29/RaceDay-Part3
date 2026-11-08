@@ -23,7 +23,6 @@
 /workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/scopedcss/bundle/RaceDay.MVC.styles.css
 /workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/scopedcss/projectbundle/RaceDay.MVC.bundle.scp.css
 /workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/compressed/xcq2afdoel-{0}-61n19gt1b8-61n19gt1b8.gz
-/workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/compressed/h1aumdsabc-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 /workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/compressed/bu5s2z8qiu-{0}-bqjiyaj88i-bqjiyaj88i.gz
 /workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/compressed/a6bch69kfm-{0}-c2jlpeoesf-c2jlpeoesf.gz
 /workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/compressed/f1kq05bofs-{0}-erw9l3u2r3-erw9l3u2r3.gz
@@ -96,3 +95,4 @@
 /workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/RaceDay.MVC.genruntimeconfig.cache
 /workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/ref/RaceDay.MVC.dll
 /workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/compressed/tshhundvo5-{0}-3sk25o0iyg-3sk25o0iyg.gz
+/workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/compressed/h1aumdsabc-{0}-o6qmz1xomo-o6qmz1xomo.gz
