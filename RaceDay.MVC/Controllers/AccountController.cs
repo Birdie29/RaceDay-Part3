@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace RaceDay.MVC.Controllers
 {
-    public class AccountController : Controllers
+    public class AccountController : Controller
     {
         [HttpGet]
         public IActionResult
@@ -23,8 +23,7 @@ namespace RaceDay.MVC.Controllers
         [HttpGet]
         public IActionResult Register(string role)
         {
-            role =
-            ValidateRole(role);
+            role = ValidateRole(role);
 
             if(role == null)
             {

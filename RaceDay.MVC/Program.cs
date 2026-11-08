@@ -1,4 +1,4 @@
-using RaceDay.MV.Services;
+using RaceDay.MVC.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +22,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
 });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -47,6 +48,5 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
-
 
 app.Run();
