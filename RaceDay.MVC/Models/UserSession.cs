@@ -4,9 +4,9 @@ namespace RaceDay.MVC.Models
     {
         public string userID {get; set;}
 
-        public string Name {get; set;}
+        public string userName {get; set;}
 
-        public string Surname{get; set;}
+        public string userSurname{get; set;}
 
         public string Email{get; set;}
 
