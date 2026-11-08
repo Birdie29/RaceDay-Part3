@@ -38,4 +38,15 @@
     </section>
 </div>
 
+<script>
+   const roleCards = document.querySelectorAll('.role-card');
+     roleCards.forEach(card => {
+        Clipboard.addEventListener('click', function () {
+            
+        roleCards.forEach( c => {
+            c.classList.remove('selected');
+        });
 
+        this.classList.add('selected');
+     });
+</script>

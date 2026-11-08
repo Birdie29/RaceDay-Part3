@@ -95,4 +95,4 @@
 /workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/RaceDay.MVC.pdb
 /workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/RaceDay.MVC.genruntimeconfig.cache
 /workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/ref/RaceDay.MVC.dll
-/workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/compressed/tshhundvo5-{0}-vaoao378fh-vaoao378fh.gz
+/workspaces/RaceDay-Part3/RaceDay.MVC/obj/Debug/net10.0/compressed/tshhundvo5-{0}-3sk25o0iyg-3sk25o0iyg.gz
