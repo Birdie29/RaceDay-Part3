@@ -29,3 +29,19 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+
+document.getElementById("registerBtn").addEventListener("click", function () {
+    if(!selectedRole) {
+        alert("Please select your role first.");
+        return;
+    }
+    window.location.href = '/Account/Regsiter?role=${selectedRole}';
+});
+
+document.getElementById("loginBtn").addEventListener("click", function () {
+    if(!selectedRole){
+        alert("Please select a role first.");
+        return;
+    }
+    window.location.href = '/Account/Login?role=${selectedRole}';
+});
