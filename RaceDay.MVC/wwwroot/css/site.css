@@ -55,6 +55,20 @@
   margin-bottom: 15px;
 }
 
+.role-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.role-card:hover {
+  transform: translateT(-5px);
+}
+
+.role-card.selected {
+  border: 2px solid #198754;
+  background-color: #e8f5e9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
 .role-icon {
   width: 80px;
