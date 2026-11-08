@@ -1,27 +1,28 @@
-using Mic rosoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 
 namespace RaceDay.MVC.Controllers
 {
-    public class OrganiserController : Controllers
+    public class OrganiserController : Controller
     {
         [HttpGet]
-        public class IActionResult Dashboard()
+        public IActionResult Dashboard()
         {
-            if(string.IsNullOrEmpty(
+            if (string.IsNullOrEmpty(
                 HttpContext.Session.GetString("UserID")
             ))
             {
-                return RedirectedToAction("Login," "Account",
-                new{ role = "Organiser"});
+                return RedirectToAction("Login", "Account",
+                    new { role = "Organiser" });
             }
 
-            string role = HttpContext.Session.GetString("Role");
+            string? role = HttpContext.Session.GetString("Role");
 
-            if(role != "Organiser")
+            if (role != "Organiser")
             {
                 return RedirectToAction("Index", "Home");
             }
+
             return View();
         }
     }

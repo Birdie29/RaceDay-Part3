@@ -8,20 +8,21 @@ namespace RaceDay.MVC.Controllers
         [HttpGet]
         public IActionResult Dashboard()
         {
-            if(string.IsNullOrEmpty(
-                HttpContext.Sesision.GetString("UserID")
+            if (string.IsNullOrEmpty(
+                HttpContext.Session.GetString("UserID")
             ))
             {
-                return RedirectedToAction("Login", "Account",
-                new {role = "Participant"});
+                return RedirectToAction("Login", "Account",
+                    new { role = "Participant" });
             }
 
-            string role = HttpContext.Session.GetString("Role");
+            string? role = HttpContext.Session.GetString("Role");
 
-            if(role != "Participant")
+            if (role != "Participant")
             {
                 return RedirectToAction("Index", "Home");
             }
+
             return View();
         }
     }

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RaceDay.MVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cd2b443e7c480d67d35aa3620c39ef790ffc8c0a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c0cc392290e82ebded9c9247e9d7d92fdaaf5b79")]
 [assembly: System.Reflection.AssemblyProductAttribute("RaceDay.MVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RaceDay.MVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
