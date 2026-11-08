@@ -8,124 +8,51 @@
 <head>
    <meta charset="utf-8" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   <title>RaceDay | Run. Complete. Achieve.</title>
-<link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
+   <title>Welcome to RaceDay</title>
 </head>
 
 <body>
-  <header class="navbar">
-    <div class="logo">
-      RACE<span> DAY</span>
-    </div>
+  <div class="welcome-page">
 
-    <div class="nav-tagline">
-       RUN. COMPETE. ACHIEVE.
-    </div>
+  <section class="intro-section">
 
-    </header>
+   <h1>RaceDay</h1>
 
-    <section class="hero">
-        <div class="hero-label">
-           WELCOME TO RaceDay
-        </div>
+   <p>See you at the finish line.</p>
+   </section>
 
-        <h1>
-        RaceEvent.<br/>
-        Distance.<br/>
-        <span> Your achievement.</span>
-        </h1>
+   <section class="role-section">
+     <h2>Choose your role</h2>
 
-        <p> Whether you're organising an unforgettable race or preparing to participate, 
-        RaceDay brings your racing experience together in one place.</p>
+     <div class="role-container">
+     
+       <div class="role-card">
+       <h3>Participant</h3>
+       <p>Be fast or be last.</p>
+       </div>
 
-        </section>
+       <div class="role-card">
+       <h3>Organiser</h3>
+       <p>This is a lot of work for a free banana.</p>
+       <div>
 
-        <main class="selection">
+       </div>
+      </section>
 
-        <h2>
-         How would you like to continue?>
-         </h2>
-         <p class="selection-intro"> Choose your role to access your RaceDay account.</p>
+      <section class="account-section">
 
-         <div class="role-container">
+      <h2>Let's get started.</h2>
+      <p>Choose your profile please.</p>
+      <button type="button">Register</button>
+      <button type="button">Login</button>
+      </section>
 
-         <div class="role-card">
-           <div class="role-icon">
-           trophy image
-           </div>
+      </div>
 
-           <h3>
-           I'm an Organiser
-           </h3>
+</body>
+</html>
 
-           <p> Create and manage races, oversee participants and bring exciting
-           racing events to life.</p>
-
-           <div class="role-actions">
-           <a 
-           asp-controller="Account"
-           asp-action="Login"
-           asp-route-role="Organiser"
-           class="btn btn-primary">
-
-                                  Organiser
-           Login
-           </a>
-
-           <a 
-           asp-controller="Account"
-           asp-action="Register"
-           asp-route-role="Organiser"
-           class="btn btn-secondary">
-           Register
-           </a>
-           </div>
-           </div>
-
-           <div class="role-card">
-              <div class="role-icon">
-              runner icon
-              </div>
-
-              <h3>
-              participants</h3>
-
-              <p>Discover exciting races, register for events and become 
-              participantsof the RaceDay community.</p>
-
-              <div class="role-actions">
-              <a 
-              asp-controllers="Account"
-              asp-action="Login"
-              asp-route-role="Participant"
-              class="btn btn-primary">
-                                               Participant 
-              Login
-              </a>
-
-              <a 
-              asp-controller="Account"
-              asp-action="Register"
-              asp-route-role="Participant"
-              class="btn btn-secondary">
-
-                                            Register
-                                            </a>
-                                            </div>
-                                            </div>
-                                            </div>
-                                        </main>
-
-                <footer class="footer">
-                <p> &copy; @DateTime.Now.Year
-
-                <strong>RaceDay</strong>.
-                RUN. COMPETE. ACHIEVE.
-                </p>
-                </footer>
-
-                </body>
-                </html>
+   
 
 
 
