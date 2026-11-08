@@ -1,64 +1,41 @@
-﻿@{
+@{
     ViewData["Title"] = "Welcome to RaceDay";
-    Layout = null;
 }
 
-<DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="utf-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-   <title>Welcome to RaceDay</title>
-</head>
+<div class="welcome-page">
+    <section class="intro-section">
+        <h1>RaceDay</h1>
+        <p>See you at the finish line.</p>
+    </section>
 
-<body>
-  <div class="welcome-page">
+    <section class="role-section">
+        <h2>Choose your role</h2>
 
-  <section class="intro-section">
+        <div class="role-container">
+            <div class="role-card">
+                <div class="role-icon">
+                    <i class="bi bi-person-running"></i>
+                </div>
+                <h3>Participant</h3>
+                <p>Be fast or be last.</p>
+            </div>
 
-   <h1>RaceDay</h1>
+            <div class="role-card">
+                <div class="role-icon">
+                    <i class="bi bi-calendar-check"></i>
+                </div>
+                <h3>Organiser</h3>
+                <p>This is a lot of work for a free banana.</p>
+            </div>
+        </div>
+    </section>
 
-   <p>See you at the finish line.</p>
-   </section>
-
-   <section class="role-section">
-     <h2>Choose your role</h2>
-
-     <div class="role-container">
-
-       <div class="role-card">
-       <div class="role-icon">
-         <i class="bi bi-person-running"></i>
-       </div>
-       <h3>Participant</h3>
-       <p>Be fast or be last.</p>
-       </div>
-
-       <div class="role-card">
-         <div class="role-icon">
-         <i class="bi bi-calendar-check"></i>
-       </div>
-       <h3>Organiser</h3>
-       <p>This is a lot of work for a free banana.</p>
-       <div>
-
-       </div>
-      </section>
-
-      <section class="account-section">
-
-      <h2>Let's get started.</h2>
-      <p>Choose your profile please.</p>
-      <button type="button">Register</button>
-      <button type="button">Login</button>
-      </section>
-
-      </div>
-
-</body>
-</html>
-
-   
-
+    <section class="account-section">
+        <h2>Let's get started.</h2>
+        <p>Choose your profile please.</p>
+        <button type="button">Register</button>
+        <button type="button">Login</button>
+    </section>
+</div>
 
 
