@@ -1,47 +1,47 @@
-.welcome-page{
+.welcome-page {
   background-color: #FFFFFF;
   color: #171717;
   width: 100%;
 }
 
-.intro-section{
+.intro-section {
   background-color: #123D2A;
   color: #FFFFFF;
   text-align: center;
   padding: 70px 20px;
 }
 
-.intro-section h1{
+.intro-section h1 {
   font-size: 45px;
   font-weight: bold;
   letter-spacing: 4px;
   margin-bottom: 15px;
 }
 
-.intro-section p{
+.intro-section p {
   font-size: 18px;
   color: #DDF0E1;
 }
 
-.role-section{
+.role-section {
   background-color: #80C995;
   text-align: center;
   padding: 60px 20px;
 }
 
-.role-section h2{
+.role-section h2 {
   color: #123D2A;
   margin-bottom: 35px;
 }
 
-.role-container{
+.role-container {
   display: flex;
-  justify-content:center;
+  justify-content: center;
   gap: 40px;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
 }
 
-.role-card{
+.role-card {
   background-color: #FFFFFF;
   border: 3px solid #123D2A;
   border-radius: 20px;
@@ -50,12 +50,12 @@
   color: #171717;
 }
 
-.role-card h3{
+.role-card h3 {
   color: #123D2A;
   margin-bottom: 15px;
 }
 
-.role-icon{
+.role-icon {
   width: 80px;
   height: 80px;
   background-color: #123D2A;
@@ -67,22 +67,22 @@
   margin: 0 auto 20px;
   font-size: 35px;
 }
-.account-section{
+.account-section {
   background-color: #123D2A;
   color: #FFFFFF;
-  text-align:center;
+  text-align: center;
   padding: 60px 20px;
 }
 
-.account-section h2{
+.account-section h2 {
   margin-bottom: 15px;
 }
 
-.account-section p{
+.account-section p {
   margin-bottom: 30px;
 }
 
-.account-section button{
+.account-section button {
   background-color: #80C995;
   color: #123D2A;
   border: 2px solid #FFFFFF;
@@ -90,10 +90,10 @@
   margin: 10px;
   border-radius: 8px;
   font-weight: bold;
-  cursor:pointer;
+  cursor: pointer;
 }
 
-.account-section button:hover{
+.account-section button:hover {
   background-color: #FFFFFF;
   color: #123D2A;
 }
