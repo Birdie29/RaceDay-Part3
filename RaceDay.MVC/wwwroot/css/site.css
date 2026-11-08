@@ -55,6 +55,18 @@
   margin-bottom: 15px;
 }
 
+.role-icon{
+  width: 80px;
+  height: 80px;
+  background-color: #123D2A;
+  color: #FFFFFF;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 20px;
+  font-size: 35px;
+}
 .account-section{
   background-color: #123D2A;
   color: #FFFFFF;
