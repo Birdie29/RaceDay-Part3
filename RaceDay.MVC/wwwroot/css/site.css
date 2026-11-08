@@ -61,7 +61,7 @@
 }
 
 .role-card:hover {
-  transform: translateT(-5px);
+  transform: translateY(-5px);
 }
 
 .role-card.selected {
