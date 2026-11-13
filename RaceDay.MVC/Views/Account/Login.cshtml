@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Login";
+    var role = ViewBag.Role as string;
+}
+
+<div class="container mt-5">
+  <div class="row justify-vontent-center">
+     <div class="col-md-6">
+     <h2 class="text-center mb-4">
+        Login as @role
+        </h2>
+
+        <form method="post" asp-action="Login">
+        <input type="hidden" name="role" value="@role"/>
+
+        <div class="mb-3">
+        <label class="form-label">EmailAddress</label>
+        <input type="email" name="Email" class="form-control" required/>
+        </div>
+
+        <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" required/>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">
+        Login</button>
+
+        </form>
+        </div>
+        </div>
+        </div>
