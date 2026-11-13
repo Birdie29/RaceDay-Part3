@@ -6,7 +6,7 @@ namespace RaceDay.MVC.Controllers
     {
         [HttpGet]
         public IActionResult
-        Login(string role)
+        Login(string? role)
         {
             role = ValidateRole(role);
 
@@ -21,7 +21,7 @@ namespace RaceDay.MVC.Controllers
         }
 
         [HttpGet]
-        public IActionResult Register(string role)
+        public IActionResult Register(string? role)
         {
             role = ValidateRole(role);
 
@@ -35,8 +35,8 @@ namespace RaceDay.MVC.Controllers
             return View();
         }
 
-        private string
-        ValidateRole(string role)
+        private string?
+        ValidateRole(string? role)
         {
             if(string.Equals(role, "Organiser",
             StringComparison.OrdinalIgnoreCase))
