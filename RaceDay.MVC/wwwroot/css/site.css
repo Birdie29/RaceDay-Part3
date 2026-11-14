@@ -464,3 +464,17 @@ background: #d9f5e2;
     padding: 15px;
   }
 }
+
+.participant-banner{
+  background: linear-gradient(120deg, #103d2a, #286644);
+  color: white;
+  padding: 35px;
+  border-radius: 15px;
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+.banner-
