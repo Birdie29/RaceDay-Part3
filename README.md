@@ -24,5 +24,5 @@ Desktop, `host.docker.internal` is available automatically; the `--add-host`
 option handles it on Linux. If the API runs in another container, set
 `ApiSettings__BaseUrl` to that API container's reachable service name and port.
 
-The container serves HTTP on port `8080`. For a public deployment, terminate
-HTTPS at a trusted reverse proxy or configure HTTPS for the container.
+The container serves HTTP on port `8080` for local use. Configure HTTPS before
+exposing the app publicly.
