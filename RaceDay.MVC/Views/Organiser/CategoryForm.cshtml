@@ -1,0 +1,91 @@
+@model RaceDay.MVC.Models.CategoryViewModel
+@{
+    var isEdit = ViewBag.IsEdit is true;
+    var events = ViewBag.Events as List<RaceDay.MVC.Models.RaceEventViewModel>
+        ?? new List<RaceDay.MVC.Models.RaceEventViewModel>();
+    ViewData["Title"] = isEdit ? "Edit Category" : "Create Category";
+    Layout = "_Layout";
+}
+
+<div class="race-dashboard">
+    <partial name="_Sidebar" />
+    <div class="dashboard-main">
+        <partial name="_WorkspaceMessages" />
+        <header class="dashboard-header">
+            <div>
+                <p class="welcome-label">EVENT SETUP</p>
+                <h1>@(isEdit ? "Edit Category" : "Create Category")</h1>
+                <p class="welcome-text">Set the distance, fee, and event for this category.</p>
+            </div>
+        </header>
+
+        <section class="events-section workspace-form-card">
+            <form asp-action="SaveCategory"
+                  method="post"
+                  class="workspace-form">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="isEdit" value="@isEdit.ToString().ToLowerInvariant()" />
+                @if (isEdit)
+                {
+                    <input asp-for="CategoryId" type="hidden" />
+                }
+                <div asp-validation-summary="ModelOnly" class="account-validation" role="alert"></div>
+
+                <div class="workspace-form-grid">
+                    @if (isEdit)
+                    {
+                        <div class="account-field">
+                            <label class="form-label">Category ID</label>
+                            <input value="@Model.CategoryId" class="form-control" readonly />
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="account-field">
+                            <label asp-for="CategoryId" class="form-label">Category ID</label>
+                            <input asp-for="CategoryId" class="form-control" required />
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+                    }
+
+                    <div class="account-field">
+                        <label asp-for="CategoryName" class="form-label">Category name</label>
+                        <input asp-for="CategoryName" class="form-control" required />
+                        <span asp-validation-for="CategoryName" class="text-danger"></span>
+                    </div>
+
+                    <div class="account-field">
+                        <label asp-for="CategoryDistance" class="form-label">Distance (km)</label>
+                        <input asp-for="CategoryDistance" type="number" min="0.1" step="0.1" class="form-control" required />
+                        <span asp-validation-for="CategoryDistance" class="text-danger"></span>
+                    </div>
+
+                    <div class="account-field">
+                        <label asp-for="EntryFee" class="form-label">Entry fee</label>
+                        <input asp-for="EntryFee" type="number" min="0" step="0.01" class="form-control" required />
+                        <span asp-validation-for="EntryFee" class="text-danger"></span>
+                    </div>
+
+                    <div class="account-field">
+                        <label asp-for="EventId" class="form-label">Event</label>
+                        <select asp-for="EventId" class="form-select" required>
+                            <option value="">Select an event</option>
+                            @foreach (var raceEvent in events)
+                            {
+                                <option value="@raceEvent.EventId">@raceEvent.EventName</option>
+                            }
+                        </select>
+                        <span asp-validation-for="EventId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="workspace-form-actions">
+                    <button type="submit" class="dashboard-action">
+                        @(isEdit ? "Save Changes" : "Create Category")
+                    </button>
+                    <a asp-action="Categories" class="workspace-link">Cancel</a>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

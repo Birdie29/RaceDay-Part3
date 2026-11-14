@@ -846,6 +846,93 @@ background: #d9f5e2;
     color: #398653;
   }
 
+  .dashboard-action{
+    display: inline-flex;
+    min-height: 42px;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 18px;
+    border: 0;
+    border-radius: 9px;
+    background: #123d2a;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 750;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .dashboard-action:hover{
+    transform: translateY(-1px);
+    background: #0b261a;
+    color: #fff;
+  }
+
+  .workspace-form-card{
+    max-width: 1000px;
+  }
+
+  .workspace-form{
+    display: grid;
+    gap: 20px;
+  }
+
+  .workspace-form-grid{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px 22px;
+  }
+
+  .workspace-form-wide{
+    grid-column: 1 / -1;
+  }
+
+  .workspace-form-actions,
+  .workspace-actions{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .workspace-link,
+  .workspace-danger{
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #21643a;
+    font-size: 13px;
+    font-weight: 750;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .workspace-link:hover{
+    color: #123d2a;
+  }
+
+  .workspace-danger{
+    color: #6a2721;
+    cursor: pointer;
+  }
+
+  .workspace-danger:hover{
+    color: #3d1713;
+  }
+
+  .workspace-actions form{
+    margin: 0;
+  }
+
+  .workspace-actions .workspace-link,
+  .workspace-actions .workspace-danger{
+    font-size: 12px;
+  }
+
+  .workspace-form-actions{
+    padding-top: 4px;
+  }
+
   @media (max-width: 480px){
     .account-page{
       padding: 24px 14px;
@@ -853,6 +940,16 @@ background: #d9f5e2;
 
     .account-brand{
       margin-bottom: 24px;
+    }
+  }
+
+  @media (max-width: 768px){
+    .workspace-form-grid{
+      grid-template-columns: 1fr;
+    }
+
+    .workspace-form-wide{
+      grid-column: auto;
     }
   }
 

@@ -1,0 +1,73 @@
+@model RaceDay.MVC.Models.RaceEventViewModel
+@{
+    var isEdit = Model.EventId != 0;
+    ViewData["Title"] = isEdit ? "Edit Event" : "Create Event";
+    Layout = "_Layout";
+}
+
+<div class="race-dashboard">
+    <partial name="_Sidebar" />
+    <div class="dashboard-main">
+        <partial name="_WorkspaceMessages" />
+        <header class="dashboard-header">
+            <div>
+                <p class="welcome-label">EVENT MANAGEMENT</p>
+                <h1>@(isEdit ? "Edit Event" : "Create Event")</h1>
+                <p class="welcome-text">Enter the details for your race event.</p>
+            </div>
+        </header>
+
+        <section class="events-section workspace-form-card">
+            <form asp-action="SaveEvent" method="post" class="workspace-form">
+                @Html.AntiForgeryToken()
+                <input asp-for="EventId" type="hidden" />
+                <div asp-validation-summary="ModelOnly" class="account-validation" role="alert"></div>
+
+                <div class="workspace-form-grid">
+                    <div class="account-field">
+                        <label asp-for="EventName" class="form-label">Event name</label>
+                        <input asp-for="EventName" class="form-control" required />
+                        <span asp-validation-for="EventName" class="text-danger"></span>
+                    </div>
+
+                    <div class="account-field">
+                        <label asp-for="EventType" class="form-label">Event type</label>
+                        <input asp-for="EventType" class="form-control" placeholder="Road race, trail run..." required />
+                        <span asp-validation-for="EventType" class="text-danger"></span>
+                    </div>
+
+                    <div class="account-field">
+                        <label asp-for="EventDate" class="form-label">Date</label>
+                        <input asp-for="EventDate" type="date" class="form-control" required />
+                        <span asp-validation-for="EventDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="account-field">
+                        <label asp-for="EventDistance" class="form-label">Distance (km)</label>
+                        <input asp-for="EventDistance" type="number" min="0.1" step="0.1" class="form-control" required />
+                        <span asp-validation-for="EventDistance" class="text-danger"></span>
+                    </div>
+
+                    <div class="account-field workspace-form-wide">
+                        <label asp-for="EventLocation" class="form-label">Location</label>
+                        <input asp-for="EventLocation" class="form-control" required />
+                        <span asp-validation-for="EventLocation" class="text-danger"></span>
+                    </div>
+
+                    <div class="account-field workspace-form-wide">
+                        <label asp-for="EventDescription" class="form-label">Description</label>
+                        <textarea asp-for="EventDescription" class="form-control" rows="4" required></textarea>
+                        <span asp-validation-for="EventDescription" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="workspace-form-actions">
+                    <button type="submit" class="dashboard-action">
+                        @(isEdit ? "Save Changes" : "Create Event")
+                    </button>
+                    <a asp-action="Events" class="workspace-link">Cancel</a>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

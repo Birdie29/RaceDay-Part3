@@ -4,37 +4,20 @@
 }
 
 <div class="race-dashboard">
-    <aside class="race-sidebar">
-        <div class="brand">
-            <span class="brand-icon"></span>
-            <span>Race<span class="brand-light">Day</span></span>
-        </div>
-
-        <p class="sidebar-label">MAIN MENU</p>
-        <a href="#" class="side-link active"><span></span> Dashboard</a>
-        <a href="#" class="side-link"><span></span> Manage Events</a>
-        <a href="#" class="side-link"><span></span> Categories</a>
-        <a href="#" class="side-link"><span></span> Enrollments</a>
-        <a href="#" class="side-link"><span></span> Race Results</a>
-
-        <div class="sidebar-bottom">
-            <p class="sidebar-label">ACCOUNT</p>
-            <a href="#" class="side-link">
-                <i class="bi bi-gear" aria-hidden="true"></i>Settings
-            </a>
-            <form asp-controller="Account" asp-action="Logout" method="post">
-                @Html.AntiForgeryToken()
-                <button type="submit" class="side-link">
-                    <i class="bi bi-box-arrow-right" aria-hidden="true"></i>Logout
-                </button>
-            </form>
-        </div>
-    </aside>
+    <partial name="_Sidebar" />
 
     <div class="dashboard-main">
         @if (ViewBag.ApiError is string apiError)
         {
             <div class="alert alert-warning" role="alert">@apiError</div>
+        }
+        @if (TempData["WorkspaceMessage"] is string successMessage)
+        {
+            <div class="alert alert-success" role="status">@successMessage</div>
+        }
+        @if (TempData["WorkspaceError"] is string errorMessage)
+        {
+            <div class="alert alert-danger" role="alert">@errorMessage</div>
         }
         <header class="dashboard-header">
             <div>
@@ -96,7 +79,7 @@
             </div>
 
             <div class="quick-grid">
-                <a href="#" class="quick-card">
+                <a asp-action="CreateEvent" class="quick-card">
                     <span class="quick-icon"><i class="bi bi-plus-lg" aria-hidden="true"></i></span>
                     <div>
                         <h4>Create Event</h4>
@@ -104,7 +87,7 @@
                     </div>
                 </a>
 
-                <a href="#" class="quick-card">
+                <a asp-action="Categories" class="quick-card">
                     <span class="quick-icon"><i class="bi bi-tags" aria-hidden="true"></i></span>
                     <div>
                         <h4>Manage Categories</h4>
@@ -112,7 +95,7 @@
                     </div>
                 </a>
 
-                <a href="#" class="quick-card">
+                <a asp-action="Registrations" class="quick-card">
                     <span class="quick-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
                     <div>
                         <h4>View Enrollments</h4>
@@ -120,7 +103,7 @@
                     </div>
                 </a>
 
-                <a href="#" class="quick-card">
+                <a asp-action="Results" class="quick-card">
                     <span class="quick-icon"><i class="bi bi-trophy" aria-hidden="true"></i></span>
                     <div>
                         <h4>Enter Results</h4>
@@ -136,7 +119,7 @@
                     <h3>Upcoming Events</h3>
                     <p>Keep track of your next scheduled races.</p>
                 </div>
-                <a href="#" class="view-all">View All Events</a>
+                <a asp-action="Events" class="view-all">View All Events</a>
             </div>
 
             <div class="table-responsive">

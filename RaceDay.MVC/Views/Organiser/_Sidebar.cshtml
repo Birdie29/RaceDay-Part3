@@ -1,0 +1,46 @@
+@{
+    var activeSection = ViewBag.ActiveSection as string ?? string.Empty;
+}
+
+<aside class="race-sidebar">
+    <div class="brand">
+        <span class="brand-icon"></span>
+        <span>Race<span class="brand-light">Day</span></span>
+    </div>
+
+    <p class="sidebar-label">MAIN MENU</p>
+    <a asp-action="Dashboard"
+       class="@(activeSection == "dashboard" ? "side-link active" : "side-link")">
+        <i class="bi bi-speedometer2" aria-hidden="true"></i>Dashboard
+    </a>
+    <a asp-action="Events"
+       class="@(activeSection == "events" ? "side-link active" : "side-link")">
+        <i class="bi bi-flag" aria-hidden="true"></i>Manage Events
+    </a>
+    <a asp-action="Categories"
+       class="@(activeSection == "categories" ? "side-link active" : "side-link")">
+        <i class="bi bi-tags" aria-hidden="true"></i>Categories
+    </a>
+    <a asp-action="Registrations"
+       class="@(activeSection == "registrations" ? "side-link active" : "side-link")">
+        <i class="bi bi-people" aria-hidden="true"></i>Enrollments
+    </a>
+    <a asp-action="Results"
+       class="@(activeSection == "results" ? "side-link active" : "side-link")">
+        <i class="bi bi-trophy" aria-hidden="true"></i>Race Results
+    </a>
+
+    <div class="sidebar-bottom">
+        <p class="sidebar-label">ACCOUNT</p>
+        <a asp-action="Profile"
+           class="@(activeSection == "profile" ? "side-link active" : "side-link")">
+            <i class="bi bi-person-circle" aria-hidden="true"></i>My Profile
+        </a>
+        <form asp-controller="Account" asp-action="Logout" method="post">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="side-link">
+                <i class="bi bi-box-arrow-right" aria-hidden="true"></i>Logout
+            </button>
+        </form>
+    </div>
+</aside>

@@ -1,0 +1,55 @@
+@model IReadOnlyList<RaceDay.MVC.Models.RegistrationViewModel>
+@{
+    ViewData["Title"] = "Enrollments";
+    Layout = "_Layout";
+}
+
+<div class="race-dashboard">
+    <partial name="_Sidebar" />
+    <div class="dashboard-main">
+        <partial name="_WorkspaceMessages" />
+        <header class="dashboard-header">
+            <div>
+                <p class="welcome-label">PARTICIPANT ACTIVITY</p>
+                <h1>Enrollments</h1>
+                <p class="welcome-text">Registrations for your race events.</p>
+            </div>
+        </header>
+
+        <section class="events-section">
+            <div class="table-responsive">
+                <table class="table events-table">
+                    <thead>
+                        <tr>
+                            <th>REGISTRATION</th>
+                            <th>DATE</th>
+                            <th>CHANNEL</th>
+                            <th>PARTICIPANT ID</th>
+                            <th>EVENT ID</th>
+                            <th>CATEGORY ID</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var registration in Model)
+                        {
+                            <tr>
+                                <td>@registration.RegistrationId</td>
+                                <td>@registration.RegistrationDate.ToString("dd MMM yyyy")</td>
+                                <td>@registration.RegistrationChannel</td>
+                                <td>@registration.ParticipantId</td>
+                                <td>@registration.EventId</td>
+                                <td>@registration.CategoryId</td>
+                            </tr>
+                        }
+                        @if (Model.Count == 0)
+                        {
+                            <tr>
+                                <td colspan="6">No registrations for your events yet.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

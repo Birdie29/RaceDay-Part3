@@ -1,0 +1,60 @@
+@model IReadOnlyList<RaceDay.MVC.Models.ResultViewModel>
+@{
+    ViewData["Title"] = "Race Results";
+    Layout = "_Layout";
+}
+
+<div class="race-dashboard">
+    <partial name="_Sidebar" />
+    <div class="dashboard-main">
+        <partial name="_WorkspaceMessages" />
+        <header class="dashboard-header">
+            <div>
+                <p class="welcome-label">RACE PERFORMANCE</p>
+                <h1>Race Results</h1>
+                <p class="welcome-text">Record and update results for registrations in your events.</p>
+            </div>
+            <a asp-action="CreateResult" class="dashboard-action">Create Result</a>
+        </header>
+
+        <section class="events-section">
+            <div class="table-responsive">
+                <table class="table events-table">
+                    <thead>
+                        <tr>
+                            <th>RESULT</th>
+                            <th>POSITION</th>
+                            <th>STATUS</th>
+                            <th>FINISH TIME</th>
+                            <th>REGISTRATION</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var result in Model)
+                        {
+                            <tr>
+                                <td>@result.ResultId</td>
+                                <td>@result.Position</td>
+                                <td>@result.ParticipantStatus</td>
+                                <td>@result.FinishTime.ToString("HH:mm:ss")</td>
+                                <td>@result.RegistrationId</td>
+                                <td>
+                                    <a asp-action="EditResult"
+                                       asp-route-id="@result.ResultId"
+                                       class="workspace-link">Edit</a>
+                                </td>
+                            </tr>
+                        }
+                        @if (Model.Count == 0)
+                        {
+                            <tr>
+                                <td colspan="6">No results have been entered yet.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+@model IReadOnlyList<RaceDay.MVC.Models.RaceEventViewModel>
+@{
+    ViewData["Title"] = "Manage Events";
+    Layout = "_Layout";
+}
+
+<div class="race-dashboard">
+    <partial name="_Sidebar" />
+    <div class="dashboard-main">
+        <partial name="_WorkspaceMessages" />
+        <header class="dashboard-header">
+            <div>
+                <p class="welcome-label">EVENT MANAGEMENT</p>
+                <h1>Manage Events</h1>
+                <p class="welcome-text">Create, update, and remove your race events.</p>
+            </div>
+            <a asp-action="CreateEvent" class="dashboard-action">Create Event</a>
+        </header>
+
+        <section class="events-section">
+            <div class="table-responsive">
+                <table class="table events-table">
+                    <thead>
+                        <tr>
+                            <th>EVENT</th>
+                            <th>DATE</th>
+                            <th>LOCATION</th>
+                            <th>DISTANCE</th>
+                            <th>TYPE</th>
+                            <th>ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var raceEvent in Model)
+                        {
+                            <tr>
+                                <td class="event-name">@raceEvent.EventName</td>
+                                <td>@raceEvent.EventDate.ToString("dd MMM yyyy")</td>
+                                <td>@raceEvent.EventLocation</td>
+                                <td>@raceEvent.EventDistance km</td>
+                                <td>@raceEvent.EventType</td>
+                                <td>
+                                    <div class="workspace-actions">
+                                        <a asp-action="EditEvent"
+                                           asp-route-id="@raceEvent.EventId"
+                                           class="workspace-link">Edit</a>
+                                        <form asp-action="DeleteEvent"
+                                              asp-route-id="@raceEvent.EventId"
+                                              method="post"
+                                              onsubmit="return confirm('Delete this event?');">
+                                            @Html.AntiForgeryToken()
+                                            <button type="submit" class="workspace-danger">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                        @if (Model.Count == 0)
+                        {
+                            <tr>
+                                <td colspan="6">You haven’t created any events yet.</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

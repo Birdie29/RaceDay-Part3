@@ -1,0 +1,81 @@
+@model RaceDay.MVC.Models.ResultViewModel
+@{
+    var isEdit = Model.ResultId != 0;
+    var registrations = ViewBag.Registrations as List<RaceDay.MVC.Models.RegistrationViewModel>
+        ?? new List<RaceDay.MVC.Models.RegistrationViewModel>();
+    ViewData["Title"] = isEdit ? "Edit Result" : "Create Result";
+    Layout = "_Layout";
+}
+
+<div class="race-dashboard">
+    <partial name="_Sidebar" />
+    <div class="dashboard-main">
+        <partial name="_WorkspaceMessages" />
+        <header class="dashboard-header">
+            <div>
+                <p class="welcome-label">RACE PERFORMANCE</p>
+                <h1>@(isEdit ? "Edit Result" : "Create Result")</h1>
+                <p class="welcome-text">Enter the finishing details for a registration.</p>
+            </div>
+        </header>
+
+        <section class="events-section workspace-form-card">
+            <form asp-action="SaveResult" method="post" class="workspace-form">
+                @Html.AntiForgeryToken()
+                <input asp-for="ResultId" type="hidden" />
+                <input type="hidden" name="isEdit" value="@isEdit.ToString().ToLowerInvariant()" />
+                <div asp-validation-summary="ModelOnly" class="account-validation" role="alert"></div>
+
+                <div class="workspace-form-grid">
+                    <div class="account-field">
+                        <label asp-for="Position" class="form-label">Position</label>
+                        <input asp-for="Position" type="number" min="1" class="form-control" required />
+                        <span asp-validation-for="Position" class="text-danger"></span>
+                    </div>
+
+                    <div class="account-field">
+                        <label asp-for="ParticipantStatus" class="form-label">Participant status</label>
+                        <input asp-for="ParticipantStatus" class="form-control" placeholder="Finished, DNF..." required />
+                        <span asp-validation-for="ParticipantStatus" class="text-danger"></span>
+                    </div>
+
+                    <div class="account-field">
+                        <label asp-for="FinishTime" class="form-label">Finish time</label>
+                        <input asp-for="FinishTime" type="time" step="1" class="form-control" required />
+                        <span asp-validation-for="FinishTime" class="text-danger"></span>
+                    </div>
+
+                    <div class="account-field">
+                        <label asp-for="RegistrationId" class="form-label">Registration</label>
+                        <select asp-for="RegistrationId" class="form-select" required>
+                            <option value="">Select a registration</option>
+                            @foreach (var registration in registrations)
+                            {
+                                if (registration.RegistrationId == Model.RegistrationId)
+                                {
+                                    <option value="@registration.RegistrationId" selected>
+                                        Registration #@registration.RegistrationId (event #@registration.EventId)
+                                    </option>
+                                }
+                                else
+                                {
+                                    <option value="@registration.RegistrationId">
+                                        Registration #@registration.RegistrationId (event #@registration.EventId)
+                                    </option>
+                                }
+                            }
+                        </select>
+                        <span asp-validation-for="RegistrationId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="workspace-form-actions">
+                    <button type="submit" class="dashboard-action">
+                        @(isEdit ? "Save Changes" : "Create Result")
+                    </button>
+                    <a asp-action="Results" class="workspace-link">Cancel</a>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
