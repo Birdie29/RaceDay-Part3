@@ -46,7 +46,7 @@ namespace RaceDay.MVC.Models
         public int EventId { get; set; }
 
         [JsonPropertyName("categoryID")]
-        public int CategoryId { get; set; }
+        public string CategoryId { get; set; } = string.Empty;
     }
 
     public sealed class ResultViewModel
@@ -100,5 +100,106 @@ namespace RaceDay.MVC.Models
         [MinLength(8)]
         [JsonPropertyName("password")]
         public string? NewPassword { get; set; }
+    }
+
+    public sealed class ParticipantProfileViewModel
+    {
+        [JsonPropertyName("participantID")]
+        public int ParticipantId { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [JsonPropertyName("participantName")]
+        public string Name { get; set; } = string.Empty;
+
+        [Required]
+        [StringLength(100)]
+        [JsonPropertyName("participantSurname")]
+        public string Surname { get; set; } = string.Empty;
+
+        [Required]
+        [EmailAddress]
+        [JsonPropertyName("email")]
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
+        [Phone]
+        [JsonPropertyName("phoneNumber")]
+        public string PhoneNumber { get; set; } = string.Empty;
+
+        [DataType(DataType.Password)]
+        [MinLength(8)]
+        public string? NewPassword { get; set; }
+    }
+
+    public sealed class ParticipantProfileUpdateRequest
+    {
+        [JsonPropertyName("participantName")]
+        public string Name { get; set; } = string.Empty;
+
+        [JsonPropertyName("participantSurname")]
+        public string Surname { get; set; } = string.Empty;
+
+        [JsonPropertyName("email")]
+        public string Email { get; set; } = string.Empty;
+
+        [JsonPropertyName("phoneNumber")]
+        public string PhoneNumber { get; set; } = string.Empty;
+
+        [JsonPropertyName("password")]
+        public string? NewPassword { get; set; }
+    }
+
+    public sealed class ParticipantCreateRegistrationRequest
+    {
+        [JsonPropertyName("eventID")]
+        public int EventId { get; set; }
+
+        [JsonPropertyName("categoryID")]
+        public string CategoryId { get; set; } = string.Empty;
+    }
+
+    public sealed class ParticipantRegistrationFormViewModel
+    {
+        [Range(1, int.MaxValue)]
+        public int EventId { get; set; }
+
+        [Required]
+        public string CategoryId { get; set; } = string.Empty;
+
+        public string EventName { get; set; } = string.Empty;
+
+        public string CategoryName { get; set; } = string.Empty;
+
+        public decimal EntryFee { get; set; }
+    }
+
+    public sealed class ParticipantEventDetailsViewModel
+    {
+        public RaceEventViewModel Event { get; set; } = new();
+
+        public IReadOnlyList<CategoryViewModel> Categories { get; set; } = [];
+    }
+
+    public sealed class ParticipantCategoryListItemViewModel
+    {
+        public CategoryViewModel Category { get; set; } = new();
+
+        public RaceEventViewModel? Event { get; set; }
+    }
+
+    public sealed class ParticipantRegistrationSummaryViewModel
+    {
+        public int RegistrationId { get; set; }
+
+        public DateTime RegistrationDate { get; set; }
+
+        public string RegistrationChannel { get; set; } = string.Empty;
+
+        public string EventName { get; set; } = string.Empty;
+
+        public DateTime EventDate { get; set; }
+
+        public string CategoryName { get; set; } = string.Empty;
     }
 }

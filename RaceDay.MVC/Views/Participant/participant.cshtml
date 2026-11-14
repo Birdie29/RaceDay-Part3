@@ -1,99 +1,58 @@
 @model IReadOnlyList<RaceDay.MVC.Models.RaceEventViewModel>
 @{
+    var recentRegistrations =
+        ViewBag.RecentRegistrations as IReadOnlyList<RaceDay.MVC.Models.ParticipantRegistrationSummaryViewModel>
+        ?? [];
     ViewData["Title"] = "Participant Dashboard";
     Layout = "_Layout";
 }
 
 <div class="race-dashboard">
-    <aside class="race-sidebar">
-        <div class="brand">
-            <span class="brand-icon"></span>
-            <span>Race<span class="brand-light">Day</span></span>
-        </div>
-
-        <p class="sidebar-label">PARTICIPANT MENU</p>
-        <a href="#" class="side-link active"><span></span>Dashboard</a>
-        <a href="#" class="side-link"><span></span>Browse Events</a>
-        <a href="#" class="side-link"><span></span>My Enrolments</a>
-        <a href="#" class="side-link"><span></span>My Results</a>
-        <a href="#" class="side-link"><span></span>My Profile</a>
-
-        <div class="sidebar-bottom">
-            <p class="sidebar-label">ACCOUNT</p>
-            <a href="#" class="side-link"><span></span>Settings</a>
-            <form asp-controller="Account" asp-action="Logout" method="post">
-                @Html.AntiForgeryToken()
-                <button type="submit" class="side-link">
-                    <span></span>Logout
-                </button>
-            </form>
-        </div>
-    </aside>
-
+    <partial name="_Sidebar" />
     <div class="dashboard-main">
-        @if (ViewBag.ApiError is string apiError)
-        {
-            <div class="alert alert-warning" role="alert">@apiError</div>
-        }
+        <partial name="_WorkspaceMessages" />
 
         <header class="dashboard-header">
             <div>
                 <p class="welcome-label">PARTICIPANT PORTAL</p>
                 <h1>Welcome, @ViewBag.UserName!</h1>
                 <p class="welcome-text">
-                    Ready for your next challenge? Explore races and track your achievements.
+                    Explore races, choose a category, and keep track of your registrations.
                 </p>
             </div>
-            <div class="header-date">
-                @DateTime.Now.ToString("dddd, dd MMMM yyyy")
-            </div>
+            <div class="header-date">@DateTime.Today.ToString("dddd, dd MMMM yyyy")</div>
         </header>
 
         <section class="participant-banner">
             <div>
                 <p class="banner-label">YOUR NEXT ADVENTURE STARTS HERE.</p>
                 <h2>Push Your Limits.<br />Achieve Your Goals.</h2>
-                <p>Discover exciting races, challenge yourself and celebrate every finish line.</p>
-                <a href="#" class="explore-button">Explore Events</a>
+                <p>Discover exciting races and find your next finish line.</p>
+                <a asp-action="Events" class="explore-button">Explore Events</a>
             </div>
             <div class="banner-decoration" aria-hidden="true"></div>
         </section>
 
         <section class="stats-grid" aria-label="Participant statistics">
             <div class="stat-card">
-                <div class="stat-top">
-                    <span>My Enrolments</span>
-                    <span class="stat-icon green-icon"></span>
-                </div>
-                <h2>3</h2>
-                <p>Total registered events</p>
+                <div class="stat-top"><span>My Registrations</span><span class="stat-icon green-icon"></span></div>
+                <h2>@ViewBag.TotalRegistrations</h2>
+                <p>Events you have joined</p>
             </div>
-
             <div class="stat-card">
-                <div class="stat-top">
-                    <span>Upcoming Races</span>
-                    <span class="stat-icon light-icon"></span>
-                </div>
-                <h2>2</h2>
-                <p>Events waiting for you</p>
+                <div class="stat-top"><span>Upcoming Races</span><span class="stat-icon light-icon"></span></div>
+                <h2>@ViewBag.UpcomingRegistrations</h2>
+                <p>Registered events ahead</p>
             </div>
-
             <div class="stat-card">
-                <div class="stat-top">
-                    <span>Completed Races</span>
-                    <span class="stat-icon yellow-icon"></span>
-                </div>
-                <h2>1</h2>
-                <p>Races completed</p>
+                <div class="stat-top"><span>Completed Races</span><span class="stat-icon yellow-icon"></span></div>
+                <h2>@ViewBag.CompletedRegistrations</h2>
+                <p>Registered events in the past</p>
             </div>
-
             <div class="stat-card">
-                <div class="stat-top">
-                    <span>My Achievements</span>
-                    <span class="stat-icon dark-icon"></span>
-                </div>
-                <h2>1</h2>
-                <p>Recorded race</p>
+                <div class="stat-top"><span>Available Events</span><span class="stat-icon dark-icon"></span></div>
+                <h2>@ViewBag.AvailableEvents</h2>
+                <p>Upcoming events to explore</p>
             </div>
         </section>
 
@@ -103,7 +62,7 @@
                     <h3>Upcoming Events</h3>
                     <p>Find your next running challenge.</p>
                 </div>
-                <a href="#" class="view-all">Browse All</a>
+                <a asp-action="Events" class="view-all">Browse All</a>
             </div>
 
             <div class="participant-event-grid">
@@ -111,7 +70,10 @@
                 {
                     <p>No race events are available right now.</p>
                 }
-                @foreach (var raceEvent in Model)
+                @foreach (var raceEvent in Model
+                    .Where(raceEvent => raceEvent.EventDate.Date >= DateTime.Today)
+                    .OrderBy(raceEvent => raceEvent.EventDate)
+                    .Take(3))
                 {
                     <article class="participant-event-card">
                         <div class="event-image">
@@ -123,10 +85,10 @@
                             <p>@raceEvent.EventLocation</p>
                             <p>@raceEvent.EventDate.ToString("dd MMMM yyyy")</p>
                             <div class="event-card-footer">
-                                <span class="status-upcoming">
-                                    @(raceEvent.EventDate.Date >= DateTime.Today ? "Upcoming" : "Completed")
-                                </span>
-                                <span class="event-link">@raceEvent.EventDescription</span>
+                                <span class="status-upcoming">Upcoming</span>
+                                <a asp-action="EventDetails"
+                                   asp-route-id="@raceEvent.EventId"
+                                   class="event-link">View event</a>
                             </div>
                         </div>
                     </article>
@@ -137,10 +99,10 @@
         <section class="events-section enrolments-section">
             <div class="section-heading">
                 <div>
-                    <h3>My Recent Enrolments</h3>
-                    <p>Keep track of your registered races.</p>
+                    <h3>My Recent Registrations</h3>
+                    <p>Keep track of the races you have joined.</p>
                 </div>
-                <a href="#" class="view-all">View All</a>
+                <a asp-action="Registrations" class="view-all">View All</a>
             </div>
 
             <div class="table-responsive">
@@ -148,24 +110,27 @@
                     <thead>
                         <tr>
                             <th>EVENT</th>
-                            <th>DATE</th>
+                            <th>RACE DATE</th>
                             <th>CATEGORY</th>
-                            <th>STATUS</th>
+                            <th>REGISTERED</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="event-name">Johannesburg Park Run</td>
-                            <td>05 Dec 2026</td>
-                            <td>10KM Open</td>
-                            <td><span class="status-upcoming">Confirmed</span></td>
-                        </tr>
-                        <tr>
-                            <td class="event-name">Two Oceans Marathon</td>
-                            <td>12 Dec 2026</td>
-                            <td>21 KM Open</td>
-                            <td><span class="status-pending">Pending</span></td>
-                        </tr>
+                        @foreach (var registration in recentRegistrations)
+                        {
+                            <tr>
+                                <td class="event-name">@registration.EventName</td>
+                                <td>@registration.EventDate.ToString("dd MMM yyyy")</td>
+                                <td>@registration.CategoryName</td>
+                                <td>@registration.RegistrationDate.ToString("dd MMM yyyy")</td>
+                            </tr>
+                        }
+                        @if (recentRegistrations.Count == 0)
+                        {
+                            <tr>
+                                <td colspan="4">You have not registered for an event yet.</td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>

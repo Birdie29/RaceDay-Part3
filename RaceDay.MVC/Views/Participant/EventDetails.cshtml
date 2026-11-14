@@ -1,0 +1,63 @@
+@model RaceDay.MVC.Models.ParticipantEventDetailsViewModel
+@{
+    ViewData["Title"] = Model.Event.EventName;
+    Layout = "_Layout";
+}
+
+<div class="race-dashboard">
+    <partial name="_Sidebar" />
+    <div class="dashboard-main">
+        <partial name="_WorkspaceMessages" />
+        <header class="dashboard-header">
+            <div>
+                <p class="welcome-label">EVENT DETAILS</p>
+                <h1>@Model.Event.EventName</h1>
+                <p class="welcome-text">@Model.Event.EventDescription</p>
+            </div>
+            <a asp-action="Events" class="workspace-link">Back to events</a>
+        </header>
+
+        <section class="stats-grid event-detail-stats">
+            <div class="stat-card"><span>DATE</span><h2>@Model.Event.EventDate.ToString("dd MMM yyyy")</h2></div>
+            <div class="stat-card"><span>LOCATION</span><h2>@Model.Event.EventLocation</h2></div>
+            <div class="stat-card"><span>DISTANCE</span><h2>@Model.Event.EventDistance km</h2></div>
+            <div class="stat-card"><span>TYPE</span><h2>@Model.Event.EventType</h2></div>
+        </section>
+
+        <section class="events-section">
+            <div class="section-heading">
+                <div>
+                    <h3>Available Categories</h3>
+                    <p>Choose a category to register for this event.</p>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table events-table">
+                    <thead>
+                        <tr><th>CATEGORY</th><th>DISTANCE</th><th>ENTRY FEE</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var category in Model.Categories)
+                        {
+                            <tr>
+                                <td class="event-name">@category.CategoryName</td>
+                                <td>@category.CategoryDistance km</td>
+                                <td>@category.EntryFee.ToString("C")</td>
+                                <td>
+                                    <a asp-action="CreateRegistration"
+                                       asp-route-eventId="@Model.Event.EventId"
+                                       asp-route-categoryId="@category.CategoryId"
+                                       class="dashboard-action">Register</a>
+                                </td>
+                            </tr>
+                        }
+                        @if (Model.Categories.Count == 0)
+                        {
+                            <tr><td colspan="4">No categories have been added to this event yet.</td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+@model RaceDay.MVC.Models.ParticipantRegistrationFormViewModel
+@{
+    ViewData["Title"] = "Confirm Registration";
+    Layout = "_Layout";
+}
+
+<div class="race-dashboard">
+    <partial name="_Sidebar" />
+    <div class="dashboard-main">
+        <partial name="_WorkspaceMessages" />
+        <header class="dashboard-header">
+            <div>
+                <p class="welcome-label">RACE REGISTRATION</p>
+                <h1>Confirm Registration</h1>
+                <p class="welcome-text">Review your event and category before registering.</p>
+            </div>
+        </header>
+
+        <section class="events-section workspace-form-card">
+            <form asp-action="CreateRegistration" method="post" class="workspace-form">
+                @Html.AntiForgeryToken()
+                <input asp-for="EventId" type="hidden" />
+                <input asp-for="CategoryId" type="hidden" />
+                <div asp-validation-summary="ModelOnly" class="account-validation" role="alert"></div>
+
+                <dl class="participant-registration-details">
+                    <div><dt>Event</dt><dd>@Model.EventName</dd></div>
+                    <div><dt>Category</dt><dd>@Model.CategoryName</dd></div>
+                    <div><dt>Entry fee</dt><dd>@Model.EntryFee.ToString("C")</dd></div>
+                </dl>
+
+                <div class="workspace-form-actions">
+                    <button type="submit" class="dashboard-action">Confirm Registration</button>
+                    <a asp-action="EventDetails" asp-route-id="@Model.EventId" class="workspace-link">Cancel</a>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

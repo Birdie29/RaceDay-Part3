@@ -953,3 +953,41 @@ background: #d9f5e2;
     }
   }
 
+  .event-detail-stats .stat-card > span{
+    color: #65746a;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 1px;
+  }
+
+  .event-detail-stats .stat-card h2{
+    overflow-wrap: anywhere;
+    font-size: 18px;
+  }
+
+  .participant-registration-details{
+    display: grid;
+    gap: 14px;
+    margin: 0;
+  }
+
+  .participant-registration-details > div{
+    display: flex;
+    justify-content: space-between;
+    gap: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e9efe9;
+  }
+
+  .participant-registration-details dt{
+    color: #65746a;
+    font-weight: 700;
+  }
+
+  .participant-registration-details dd{
+    margin: 0;
+    color: #103d2a;
+    font-weight: 750;
+    text-align: right;
+  }
+
