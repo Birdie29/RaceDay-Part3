@@ -7,5 +7,6 @@ namespace RaceDay.MVC.Models
         public string participationSurname { get; set; } = string.Empty;
         public string email { get; set; } = string.Empty;
         public string phoneNumber { get; set; } = string.Empty;
+        public string passwordHash {get; set; } = string.Empty;
     }
 }
