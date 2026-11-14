@@ -19,15 +19,19 @@
 
         <div class="sidebar-bottom">
             <p class="sidebar-label">ACCOUNT</p>
-            <a href="#" class="side-link"><span>radio icon</span> Settings</a>
+            <a href="#" class="side-link">
+                <i class="bi bi-gear" aria-hidden="true"></i>Settings
+            </a>
             <form asp-controller="Account" asp-action="Logout" method="post">
                 @Html.AntiForgeryToken()
-                <button type="submit" class="side-link"><span>arrow</span> Logout</button>
+                <button type="submit" class="side-link">
+                    <i class="bi bi-box-arrow-right" aria-hidden="true"></i>Logout
+                </button>
             </form>
         </div>
     </aside>
 
-    <main class="dashboard-main">
+    <div class="dashboard-main">
         @if (ViewBag.ApiError is string apiError)
         {
             <div class="alert alert-warning" role="alert">@apiError</div>
@@ -40,7 +44,7 @@
             </div>
 
             <div class="header-date">
-                <span>calendar</span>
+                <i class="bi bi-calendar3" aria-hidden="true"></i>
                 @DateTime.Now.ToString("dddd, dd MMMM yyyy")
             </div>
         </header>
@@ -49,7 +53,7 @@
             <div class="stat-card">
                 <div class="stat-top">
                     <span>Total Events</span>
-                    <span class="stat-icon green-icon">flag</span>
+                    <span class="stat-icon green-icon"><i class="bi bi-flag-fill" aria-hidden="true"></i></span>
                 </div>
                 <h2>@ViewBag.TotalEvents</h2>
                 <p>Events created</p>
@@ -93,7 +97,7 @@
 
             <div class="quick-grid">
                 <a href="#" class="quick-card">
-                    <span class="quick-icon">+</span>
+                    <span class="quick-icon"><i class="bi bi-plus-lg" aria-hidden="true"></i></span>
                     <div>
                         <h4>Create Event</h4>
                         <p>Add a new race event</p>
@@ -101,7 +105,7 @@
                 </a>
 
                 <a href="#" class="quick-card">
-                    <span class="quick-icon"></span>
+                    <span class="quick-icon"><i class="bi bi-tags" aria-hidden="true"></i></span>
                     <div>
                         <h4>Manage Categories</h4>
                         <p>Set up race categories</p>
@@ -109,7 +113,7 @@
                 </a>
 
                 <a href="#" class="quick-card">
-                    <span class="quick-icon"></span>
+                    <span class="quick-icon"><i class="bi bi-people" aria-hidden="true"></i></span>
                     <div>
                         <h4>View Enrollments</h4>
                         <p>Check registered runners</p>
@@ -117,7 +121,7 @@
                 </a>
 
                 <a href="#" class="quick-card">
-                    <span class="quick-icon"></span>
+                    <span class="quick-icon"><i class="bi bi-trophy" aria-hidden="true"></i></span>
                     <div>
                         <h4>Enter Results</h4>
                         <p>Publish race results</p>
@@ -177,5 +181,5 @@
         <footer class="dashboard-footer">
             © @DateTime.Now.Year RaceDay. All rights reserved. Keep moving. Keep racing.
         </footer>
-    </main>
+    </div>
 </div>
