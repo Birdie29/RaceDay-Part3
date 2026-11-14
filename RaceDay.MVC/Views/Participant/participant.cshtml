@@ -1,3 +1,4 @@
+@model IReadOnlyList<RaceDay.MVC.Models.RaceEventViewModel>
 @{
     ViewData["Title"] = "Participant Dashboard";
     Layout = "_Layout";
@@ -33,19 +34,26 @@
 Settings
 </a>
 
-<a asp-controller="Account" asp-action="Login" class="side-link">
+<form asp-controller="Account" asp-action="Logout" method="post">
+@Html.AntiForgeryToken()
+<button type="submit" class="side-link">
 <span></span>
 Logout
-</a>
+</button>
+</form>
 </div>
 
 <main class="dashboard-main">
+@if (ViewBag.ApiError is string apiError)
+{
+    <div class="alert alert-warning" role="alert">@apiError</div>
+}
 <header class="dashboard-border">
 
 <div>
 <p class="welcome-label">PARTICIPANT PORTAL</p>
 
-<h1>Welcome, Runner!</h1>
+<h1>Welcome, @ViewBag.UserName!</h1>
 <p class="welcome-text">Ready for your next challenge? Explore races and
 track your achievements.</p>
 </div>
@@ -127,49 +135,30 @@ track your achievements.</p>
 </div>
 
 <div class="participant-event-grid">
-
-<div class="participant-event-card">
-
-<div class="event-image johannesburg-image">
-<span>10km</span>
-</div>
-
-<div class="participant-event-info">
-<span class="event-category">ROAD RUNNING</span>
-
-<h4>Johannesburg City Run</h4>
-<p>Johannesburg</p>
-<p>5 December 2026</p>
-
-<div class="event-card-footer">
-
-<span class="status-upcoming">Enrolment Open</span>
-
-<a href="#" class="event-link">View Results</a>
-</div>
-</div>
-</div>
-
-<div class="participant-event-card">
-
-<div class="event-image pretoria-image">
-<span>21KM</span>
-</div>
-
-<div class="participant-event-info">
-<span class="event-category">HALF MARATHON</span>
-
-<h4>Soweto Marathon</h4>
-<p>Johannesburg</p>
-<p>12 December 2026</p>
-
-<div class="event-card-footer">
-<span class="status-upcoming">Enrolment Open</span>
-
-<a href="#" class="event-link">View Details</a>
-</div>
-</div>
-</div>
+@if (Model.Count == 0)
+{
+    <p>No race events are available right now.</p>
+}
+@foreach (var raceEvent in Model)
+{
+    <div class="participant-event-card">
+        <div class="event-image">
+            <span>@($"{raceEvent.EventDistance:0.##} km")</span>
+        </div>
+        <div class="participant-event-info">
+            <span class="event-category">@raceEvent.EventType</span>
+            <h4>@raceEvent.EventName</h4>
+            <p>@raceEvent.EventLocation</p>
+            <p>@raceEvent.EventDate.ToString("dd MMMM yyyy")</p>
+            <div class="event-card-footer">
+                <span class="status-upcoming">
+                    @(raceEvent.EventDate.Date >= DateTime.Today ? "Upcoming" : "Completed")
+                </span>
+                <span class="event-link">@raceEvent.EventDescription</span>
+            </div>
+        </div>
+    </div>
+}
 </div>
 </section>
 

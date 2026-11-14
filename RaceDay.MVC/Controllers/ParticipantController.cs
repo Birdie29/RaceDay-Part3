@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using RaceDay.MVC.Models;
 using RaceDay.MVC.Services;
-using System.Text.Json;
 
 namespace RaceDay.MVC.Controllers
 {
@@ -17,24 +17,32 @@ namespace RaceDay.MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Dashboard()
         {
-            if (string.IsNullOrEmpty(
-                HttpContext.Session.GetString("UserID")
-            ))
+            if (HttpContext.Session.GetString("Role") != "Participant" ||
+                string.IsNullOrEmpty(HttpContext.Session.GetString("Email")))
             {
                 return RedirectToAction("Login", "Account",
                     new { role = "Participant" });
             }
 
-            string? role = HttpContext.Session.GetString("Role");
-
-            if (role != "Participant")
+            var events = new List<RaceEventViewModel>();
+            try
             {
-                return RedirectToAction("Index", "Home");
+                events = await _apiService.GetAsync<List<RaceEventViewModel>>(
+                    "api/RaceEvent"
+                ) ?? [];
+            }
+            catch (ApiRequestException exception)
+            {
+                ViewBag.ApiError = exception.Message;
+            }
+            catch (HttpRequestException)
+            {
+                ViewBag.ApiError =
+                    "Could not connect to the RaceDay API. Check that it is running.";
             }
 
-            var events = await _apiService.GetAsync<List<JsonElement>>(
-                "api/RaceEvent/GetEvents"
-            );
+            ViewBag.UserName =
+                HttpContext.Session.GetString("UserName") ?? "Runner";
 
             return View("participant", events);
         }

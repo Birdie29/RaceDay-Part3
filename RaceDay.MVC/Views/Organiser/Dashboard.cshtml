@@ -20,15 +20,22 @@
         <div class="sidebar-bottom">
             <p class="sidebar-label">ACCOUNT</p>
             <a href="#" class="side-link"><span>radio icon</span> Settings</a>
-            <a asp-controller="Account" asp-action="Login" class="side-link"><span>arrow</span> Logout</a>
+            <form asp-controller="Account" asp-action="Logout" method="post">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="side-link"><span>arrow</span> Logout</button>
+            </form>
         </div>
     </aside>
 
     <main class="dashboard-main">
+        @if (ViewBag.ApiError is string apiError)
+        {
+            <div class="alert alert-warning" role="alert">@apiError</div>
+        }
         <header class="dashboard-header">
             <div>
                 <p class="welcome-label">ORGANISER PORTAL</p>
-                <h1>Dashboard</h1>
+                <h1>Welcome, @ViewBag.UserName</h1>
                 <p class="welcome-text">Welcome back! Here’s what’s happening with your events.</p>
             </div>
 
@@ -144,12 +151,22 @@
                         @foreach (var race in ViewBag.Events)
                         {
                             <tr>
-                                <td class="event-name">@race.name</td>
-                                <td>@race.Date.ToString("dd MMM yyyy")</td>
-                                <td>@race.Location</td>
-                                <td>@race.Distance</td>
-                                <td><span class="enrolment-count">@race.ENROLMENTS</span></td>
-                                <td><span class="status-upcoming">@race.status</span></td>
+                                <td class="event-name">@race.EventName</td>
+                                <td>@race.EventDate.ToString("dd MMM yyyy")</td>
+                                <td>@race.EventLocation</td>
+                                <td>@race.EventDistance km</td>
+                                <td><span class="enrolment-count">—</span></td>
+                                <td>
+                                    <span class="status-upcoming">
+                                        @(race.EventDate.Date >= DateTime.Today ? "Upcoming" : "Completed")
+                                    </span>
+                                </td>
+                            </tr>
+                        }
+                        @if (ViewBag.Events.Count == 0)
+                        {
+                            <tr>
+                                <td colspan="6">No race events are available right now.</td>
                             </tr>
                         }
                     </tbody>

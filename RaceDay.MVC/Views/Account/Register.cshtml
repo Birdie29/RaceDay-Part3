@@ -1,3 +1,4 @@
+@model RaceDay.MVC.Models.RegisterViewModel
 @{
     ViewData["Title"] = "Register";
     var role = ViewBag.Role as string;
@@ -11,36 +12,42 @@
        </h2>
 
        <form method="post" asp-action="Register">
-         <input type="hidden" name="role" value="@role" />
+         @Html.AntiForgeryToken()
+         <input asp-for="Role" type="hidden" value="@role" />
+         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
          <div class="mb-3">
            <label class="form-label">Name</label>
-           <input type="text" name="Name" class="form-control" required/>
+           <input asp-for="Name" type="text" class="form-control" required/>
            </div>
 
            <div class="mb-3">
            <label class="form-label">Surname</label>
-           <input type="text" name="Surname" class="form-control" required/>
+           <input asp-for="Surname" type="text" class="form-control" required/>
            </div>
 
            <div class="mb-3">
            <label class="form-label"> EmailAddress</label>
-           <input type="email" name="Email" class="form-control" required/>
+           <input asp-for="Email" type="email" class="form-control" required/>
            </div>
 
            <div class="mb-3">
            <label class="form-label">PhoneNumber</label>
-           <input type="tel" name="PhoneNumber" class="form-control" required/>
+           <input asp-for="PhoneNumber" type="tel" class="form-control" required/>
            </div>
 
            <div class="mb-3">
            <label class="form-label">Password</label>
-           <input type="password" name="Password" class="form-control" required/>
+           <input asp-for="Password" type="password" class="form-control" required/>
            </div>
 
            <button type="submit" class="btn btn-primary w-100">
            Register</button>
            </form>
+           <p class="mt-3">
+             Already registered?
+             <a asp-action="Login" asp-route-role="@role">Log in</a>
+           </p>
            </div>
            </div>
            </div>

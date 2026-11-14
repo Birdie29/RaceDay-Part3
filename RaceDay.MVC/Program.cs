@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddHttpClient<IApiService, ApiService>(client =>
 {
@@ -16,6 +17,10 @@ builder.Services.AddHttpClient<IApiService, ApiService>(client =>
     }
 
     client.BaseAddress = new Uri(baseUrl);
+})
+.ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+{
+    UseCookies = false
 });
 
 builder.Services.AddDistributedMemoryCache();

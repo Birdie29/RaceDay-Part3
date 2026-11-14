@@ -11,7 +11,7 @@ namespace RaceDay.MVC.Models{
 
         [Required]
         [EmailAddress]
-        public string email { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
 
         [Required]
         [DataType(DataType.Password)]
