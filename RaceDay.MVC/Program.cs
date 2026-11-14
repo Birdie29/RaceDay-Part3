@@ -5,12 +5,18 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddHttpClient(
-    "RaceDayAPI", client =>
+builder.Services.AddHttpClient<IApiService, ApiService>(client =>
+{
+    var baseUrl = builder.Configuration["ApiSettings:BaseUrl"];
+    if (string.IsNullOrWhiteSpace(baseUrl))
     {
-        client.BaseAddress = new
-        Uri("https://localhost:5013/");
-    });
+        throw new InvalidOperationException(
+            "ApiSettings:BaseUrl must be configured."
+        );
+    }
+
+    client.BaseAddress = new Uri(baseUrl);
+});
 
 builder.Services.AddDistributedMemoryCache();
 

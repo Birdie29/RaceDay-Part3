@@ -1,12 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using RaceDay.MVC.Services;
+using System.Text.Json;
 
 namespace RaceDay.MVC.Controllers
 {
     public class ParticipantController : Controller
     {
+        private readonly IApiService _apiService;
+
+        public ParticipantController(IApiService apiService)
+        {
+            _apiService = apiService;
+        }
+
         [HttpGet]
-        public IActionResult Dashboard()
+        public async Task<IActionResult> Dashboard()
         {
             if (string.IsNullOrEmpty(
                 HttpContext.Session.GetString("UserID")
@@ -23,10 +32,11 @@ namespace RaceDay.MVC.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            var events = await _apiService.GetAsync<List<RaceEvent>>(
+            var events = await _apiService.GetAsync<List<JsonElement>>(
                 "api/RaceEvent/GetEvents"
-            )
-            return View(events);
+            );
+
+            return View("participant", events);
         }
     }
 }
