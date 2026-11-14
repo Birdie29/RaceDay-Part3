@@ -23,7 +23,10 @@ namespace RaceDay.MVC.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
-            return View();
+            var events = await _apiService.GetAsync<List<RaceEvent>>(
+                "api/RaceEvent/GetEvents"
+            )
+            return View(events);
         }
     }
 }
