@@ -477,4 +477,162 @@ background: #d9f5e2;
   overflow: hidden;
 }
 
-.banner-
+.banner-label{
+  color: #a8dfb7;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.participant-banner h2{
+  font-size: 30px;
+  font-weight: 800;
+  margin: 15px 0;
+}
+
+.participant-banner p{
+  color: #d6e9db;
+  font-size: 13px;
+}
+
+.banner-decoration{
+  font-size: 100px;
+  opacity: 0.8;
+}
+
+.explore-button{
+  display: inline-block;
+  background: #a5dfb1;
+  color: #103d2a;
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 750;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.explore-button:hover{
+  background: white;
+  color: #103d2a;
+}
+
+.participant-event-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.participant-event-card{
+  background: white;
+  border: 1px solid #e9efe9;
+  border-radius: 13px;
+  overflow: hidden;
+  transition: 0.2s;
+}
+
+.participant-event-card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+
+.event-image{
+  height: 145px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 65px;
+  position: relative;
+  color: white;
+}
+
+.johannesburg-image{
+  background: linear-gradient(120deg, #174a30, #6eac78);
+}
+
+.pretoria-image{
+  background: linear-gradient(120deg, #204e38, #8dbb8c);
+}
+
+.event-image span{
+  position: absolute;
+  right: 15px;
+  bottom: 12px;
+  background: white;
+  color: #174a30;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.participant-event-info{
+  padding: 20px;
+}
+
+.event-category{
+  color: #398653;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.participant-event-info h4{
+  font-size: 17px;
+  font-weight: 800;
+  color: #103d2a;
+  margin: 10px 0;
+}
+
+.participant-event-info p{
+  color: #78877d;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.event-card-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.event-link{
+  color: #27804a;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 750;
+}
+
+.status-pending{
+  background: #fff0d4;
+  color: #a46b09;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 750;
+}
+
+.enrolments-section{
+  margin-top: 30px;
+}
+
+@media (max-width: 768px){
+  .participant-banner{
+    padding: 25px;
+  }
+
+  .banner-decoration{
+    display: none;
+  }
+
+  .participant-event-grid{
+    grid-template-columns: 1fr;
+  }
+
+  .participant-banner h2{
+    font-size: 25px;
+  }
+}
