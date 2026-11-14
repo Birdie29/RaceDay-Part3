@@ -660,3 +660,199 @@ background: #d9f5e2;
   }
 }
 
+  .account-page{
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    place-items: center;
+    min-height: 100vh;
+    padding: 48px 20px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0b261a, #123d2a 58%, #1d5a39);
+    color: #171717;
+  }
+
+  .account-page::before,
+  .account-page::after{
+    position: absolute;
+    z-index: -1;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: #80c995;
+    content: "";
+    opacity: 0.14;
+  }
+
+  .account-page::before{
+    top: -170px;
+    left: -120px;
+  }
+
+  .account-page::after{
+    right: -130px;
+    bottom: -190px;
+    width: 440px;
+    height: 440px;
+  }
+
+  .account-card{
+    width: min(100%, 480px);
+    padding: clamp(28px, 5vw, 44px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+  }
+
+  .account-card--register{
+    width: min(100%, 560px);
+  }
+
+  .account-brand{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 32px;
+    color: #123d2a;
+    font-size: 25px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .account-brand:hover{
+    color: #123d2a;
+  }
+
+  .account-brand-mark{
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border-radius: 12px;
+    background: #123d2a;
+    color: #fff;
+    font-size: 18px;
+  }
+
+  .account-brand-light{
+    color: #398653;
+  }
+
+  .account-eyebrow{
+    margin-bottom: 8px;
+    color: #398653;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+  }
+
+  .account-card h1{
+    margin-bottom: 8px;
+    color: #123d2a;
+    font-size: clamp(25px, 5vw, 32px);
+    font-weight: 800;
+  }
+
+  .account-intro{
+    margin-bottom: 26px;
+    color: #65746a;
+    font-size: 14px;
+  }
+
+  .account-form{
+    display: grid;
+    gap: 17px;
+  }
+
+  .account-field .form-label{
+    margin-bottom: 7px;
+    color: #17251c;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .account-field .form-control{
+    min-height: 48px;
+    border-color: #d7e2da;
+    border-radius: 9px;
+    color: #171717;
+  }
+
+  .account-field .form-control::placeholder{
+    color: #89958d;
+  }
+
+  .account-field .form-control:focus{
+    border-color: #398653;
+    box-shadow: 0 0 0 0.2rem rgba(128, 201, 149, 0.3);
+  }
+
+  .account-submit{
+    min-height: 49px;
+    margin-top: 5px;
+    border: 0;
+    border-radius: 9px;
+    background: #123d2a;
+    color: #fff;
+    font-weight: 750;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .account-submit:hover{
+    transform: translateY(-1px);
+    background: #0b261a;
+  }
+
+  .account-submit:focus-visible,
+  .account-brand:focus-visible,
+  .account-switch a:focus-visible{
+    outline: 3px solid #80c995;
+    outline-offset: 3px;
+  }
+
+  .account-notice,
+  .account-validation ul{
+    margin: 0 0 20px;
+    padding: 12px 14px;
+    border: 1px solid #b7dfc1;
+    border-radius: 9px;
+    background: #eaf6ed;
+    color: #123d2a;
+    font-size: 13px;
+  }
+
+  .account-validation ul{
+    padding-left: 32px;
+  }
+
+  .account-switch{
+    margin: 24px 0 0;
+    color: #65746a;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .account-switch a{
+    color: #123d2a;
+    font-weight: 750;
+    text-decoration: underline;
+    text-decoration-color: #80c995;
+    text-underline-offset: 3px;
+  }
+
+  .account-switch a:hover{
+    color: #398653;
+  }
+
+  @media (max-width: 480px){
+    .account-page{
+      padding: 24px 14px;
+    }
+
+    .account-brand{
+      margin-bottom: 24px;
+    }
+  }
+
