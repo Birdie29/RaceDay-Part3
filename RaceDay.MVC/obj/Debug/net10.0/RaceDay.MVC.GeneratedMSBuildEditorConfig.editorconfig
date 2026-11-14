@@ -83,8 +83,40 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvT3JnYW5pc2VyL19Xb3Jrc3BhY2VNZXNzYWdlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/workspaces/RaceDay-Part3/RaceDay.MVC/Views/Participant/Categories.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydGljaXBhbnQvQ2F0ZWdvcmllcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/workspaces/RaceDay-Part3/RaceDay.MVC/Views/Participant/EventDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydGljaXBhbnQvRXZlbnREZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/workspaces/RaceDay-Part3/RaceDay.MVC/Views/Participant/Events.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydGljaXBhbnQvRXZlbnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/workspaces/RaceDay-Part3/RaceDay.MVC/Views/Participant/participant.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydGljaXBhbnQvcGFydGljaXBhbnQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/workspaces/RaceDay-Part3/RaceDay.MVC/Views/Participant/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydGljaXBhbnQvUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/workspaces/RaceDay-Part3/RaceDay.MVC/Views/Participant/RegistrationForm.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydGljaXBhbnQvUmVnaXN0cmF0aW9uRm9ybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/workspaces/RaceDay-Part3/RaceDay.MVC/Views/Participant/Registrations.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydGljaXBhbnQvUmVnaXN0cmF0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/workspaces/RaceDay-Part3/RaceDay.MVC/Views/Participant/_Sidebar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydGljaXBhbnQvX1NpZGViYXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/workspaces/RaceDay-Part3/RaceDay.MVC/Views/Participant/_WorkspaceMessages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUGFydGljaXBhbnQvX1dvcmtzcGFjZU1lc3NhZ2VzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/workspaces/RaceDay-Part3/RaceDay.MVC/Views/Shared/Error.cshtml]
